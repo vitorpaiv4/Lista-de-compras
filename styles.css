@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   
   .container {
@@ -9,14 +9,12 @@ body {
     text-align: center;
   }
   
-  input[type="text"] {
-    width: 60%;
+  input[type="text"], input[type="number"], button {
     padding: 10px;
     margin-bottom: 10px;
   }
   
   button {
-    padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -30,15 +28,25 @@ body {
   ul {
     list-style-type: none;
     padding: 0;
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical */
+    max-height: 400px; /* Altura máxima da lista antes de adicionar a barra de rolagem */
   }
   
   li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
   
-  li:last-child {
-    border-bottom: none;
+  li span {
+    flex-grow: 1;
+  }
+  
+  li button {
+    margin-left: 10px;
+    margin-right: 0; /* Corrigindo a margem direita para zero */
   }
   .rodape{
     font-family: sans-serif;
