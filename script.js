@@ -21,6 +21,7 @@ function addItem() {
   // Função para adicionar um item pressionando Enter
   function addItemOnEnter(event) {
     if (event.key === 'Enter') {
+      event.preventDefault(); // Evita que o formulário seja enviado
       addItem();
     }
   }
@@ -56,12 +57,25 @@ function addItem() {
     var editText = prompt('Editar item:', text);
     if (editText !== null) {
       spanElement.textContent = editText;
-      saveList(); // Salva a lista após editar um item
+      // Adiciona um botão verde ao lado do item editado
+      spanElement.insertAdjacentHTML('afterend', '<button class="green-button" onclick="saveEditedItem(this)">Salvar</button>');
     }
   }
   
+  // Função para salvar o item editado
+  function saveEditedItem(buttonElement) {
+    var spanElement = buttonElement.previousElementSibling;
+    var newText = spanElement.textContent;
+    var editText = prompt('Editar item:', newText);
+    if (editText !== null) {
+      spanElement.textContent = editText;
+    }
+    buttonElement.remove(); // Remove o botão após salvar a edição
+    saveList(); // Salva a lista após editar um item
+  }
+  
   // Função para salvar a lista atual no armazenamento local
-  function saveList() {
+function saveList() {
     var itemList = document.getElementById('itemList').innerHTML;
     localStorage.setItem('shoppingList', itemList);
   }
