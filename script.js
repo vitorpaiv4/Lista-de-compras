@@ -11,7 +11,7 @@ function addItem() {
       
       var itemList = document.getElementById('itemList');
       var newItem = document.createElement('li');
-      newItem.innerHTML = '<span onclick="editItem(this)">' + itemText + '</span> <button onclick="markItem(this)">Comprado</button> <button onclick="removeItem(this)">Remover</button> <span>Qtd: ' + quantity + '</span>';
+      newItem.innerHTML = '<span onclick="editItem(this)">' + itemText + '</span> <button onclick="markItem(this)">Comprado</button> <button onclick="removeItem(this)">Remover</button> <span onclick="editQuantity(this)">' + quantity + '</span>';
       itemList.appendChild(newItem);
       itemInput.value = '';
       quantityInput.value = ''; // Limpa o campo de quantidade após adicionar um item
@@ -27,11 +27,22 @@ function addItem() {
     var editText = prompt('Editar item:', text);
     if (editText !== null) {
       spanElement.textContent = editText;
+      saveList(); // Salva a lista após editar um item
+    }
+  }
+  
+  // Função para editar a quantidade de itens
+  function editQuantity(spanElement) {
+    var text = spanElement.textContent;
+    var editQuantity = prompt('Editar quantidade:', text);
+    if (editQuantity !== null) {
+      spanElement.textContent = editQuantity;
+      saveList(); // Salva a lista após editar a quantidade
     }
   }
   
   // Função para marcar um item como comprado
-function markItem(itemButton) {
+  function markItem(itemButton) {
     var listItem = itemButton.parentElement;
     var itemSpan = listItem.querySelector('span');
     itemSpan.style.textDecoration = 'line-through';
@@ -40,8 +51,8 @@ function markItem(itemButton) {
     saveList(); // Salva a lista após marcar um item
   }
   
- // Função para desmarcar um item como comprado
-function unmarkItem(itemButton) {
+  // Função para desmarcar um item como comprado
+  function unmarkItem(itemButton) {
     var listItem = itemButton.parentElement;
     var itemSpan = listItem.querySelector('span');
     itemSpan.style.textDecoration = 'none';
