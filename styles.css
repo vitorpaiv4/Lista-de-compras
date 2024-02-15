@@ -4,7 +4,7 @@ body {
   }
   
   .container {
-    max-width: 37.5rem;
+    max-width: 50%;
     margin: 0 auto;
     padding:1.25rem ;
     text-align: center;
