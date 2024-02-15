@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lista de Compras</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-  <h1>Lista de Compras</h1>
-  <form onsubmit="return false;">
-    <input type="text" id="itemInput" placeholder="Digite um item..." onkeypress="addItemOnEnter(event)">
-    <input type="number" id="quantityInput" placeholder="Qtd">
+  <div class="container">
+    <h1>Lista de Compras</h1>
+    <input type="text" id="itemInput" placeholder="Item">
+    <input type="number" id="quantityInput" placeholder="Quantidade">
+    <select id="unitSelect">
+      <option value="Qtd">Qtd</option>
+      <option value="G">G</option>
+      <option value="KG">KG</option>
+    </select>
     <button onclick="addItem()">Adicionar Item</button>
-  </form>
-  <ul id="itemList"></ul>
-</div>
-<script src="script.js"></script>
-
-<footer class="rodape">
-    <p>Desenvolvido por Vitor Paiva</p>
-</footer>
+    <ul id="itemList"></ul>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
