@@ -2,32 +2,24 @@
 function addItem() {
   var itemInput = document.getElementById('itemInput');
   var quantityInput = document.getElementById('quantityInput');
+  var unitSelect = document.getElementById('unitSelect');
   var itemText = itemInput.value.trim();
   var quantity = quantityInput.value.trim();
+  var unit = unitSelect.value;
   
-  if (itemText !== '') {
+  if (itemText !== '' && quantity !== '') {
     // Capitaliza a primeira letra do texto do item
     itemText = itemText.charAt(0).toUpperCase() + itemText.slice(1);
     
     var itemList = document.getElementById('itemList');
     var newItem = document.createElement('li');
-    newItem.innerHTML = '<span onclick="editItem(this)">' + itemText + '</span> <span onclick="editQuantity(this)">Qtd: ' + quantity + '</span> <button onclick="markItem(this)">Comprado</button> <button onclick="removeItem(this)">Remover</button>';
+    newItem.innerHTML = '<span onclick="editItem(this)">' + itemText + '</span> <span onclick="editQuantity(this)">' + quantity + ' ' + unit + '</span> <button onclick="markItem(this)">Comprado</button> <button onclick="removeItem(this)">Remover</button>';
     itemList.appendChild(newItem);
     itemInput.value = '';
     quantityInput.value = ''; // Limpa o campo de quantidade após adicionar um item
     saveList(); // Salva a lista após adicionar um item
   } else {
-    alert('Por favor, insira um item válido.');
-  }
-}
-
-// Função para editar um item
-function editItem(spanElement) {
-  var text = spanElement.textContent;
-  var editText = prompt('Editar item:', text);
-  if (editText !== null) {
-    spanElement.textContent = editText;
-    saveList(); // Salva a lista após editar um item
+    alert('Por favor, insira um item e uma quantidade válidos.');
   }
 }
 
@@ -36,8 +28,21 @@ function editQuantity(spanElement) {
   var text = spanElement.textContent;
   var editQuantity = prompt('Editar quantidade:', text);
   if (editQuantity !== null) {
-    spanElement.textContent = 'Qtd: ' + editQuantity;
+    var unitIndex = text.indexOf(' '); // Encontra o índice do espaço em branco entre a quantidade e a unidade
+    var quantity = editQuantity.trim();
+    var unit = text.substring(unitIndex + 1); // Obtém a unidade atual do texto
+    spanElement.textContent = quantity + ' ' + unit;
     saveList(); // Salva a lista após editar a quantidade
+  }
+}
+
+// Função para adicionar um item à lista
+function editItem(spanElement) {
+  var text = spanElement.textContent;
+  var editText = prompt('Editar item:', text);
+  if (editText !== null) {
+    spanElement.textContent = editText;
+    saveList(); // Salva a lista após editar um item
   }
 }
 
