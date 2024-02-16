@@ -32,7 +32,7 @@ function editQuantity(spanElement) {
     var quantity = editQuantity.trim();
     var unit = text.substring(unitIndex + 1); // Obtém a unidade atual do texto
     spanElement.textContent = quantity + ' ' + unit;
-    saveList(); // Salva a lista após editar a quantidade
+    saveList(); 
   }
 }
 
@@ -41,7 +41,7 @@ function editItem(spanElement) {
   var editText = prompt('Editar item:', text);
   if (editText !== null) {
     spanElement.textContent = editText;
-    saveList(); // Salva a lista após editar um item
+    saveList(); 
   }
 }
 
@@ -51,7 +51,7 @@ function markItem(itemButton) {
   itemSpan.style.textDecoration = 'line-through';
   itemButton.textContent = 'Desmarcar';
   itemButton.setAttribute('onclick', 'unmarkItem(this)');
-  saveList(); // Salva a lista após marcar um item
+  saveList(); 
 }
 
 function unmarkItem(itemButton) {
@@ -60,13 +60,13 @@ function unmarkItem(itemButton) {
   itemSpan.style.textDecoration = 'none';
   itemButton.textContent = 'Comprado';
   itemButton.setAttribute('onclick', 'markItem(this)');
-  saveList(); // Salva a lista após desmarcar um item
+  saveList(); 
 }
 
 function removeItem(itemButton) {
   var listItem = itemButton.parentElement;
   listItem.remove();
-  saveList(); // Salva a lista após remover um item
+  saveList(); 
 }
 
 function saveList() {
