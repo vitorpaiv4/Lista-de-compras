@@ -8,7 +8,7 @@ function addItem() {
   var unit = unitSelect.value;
   
   if (itemText !== '' && quantity !== '') {
-    // Capitaliza a primeira letra do texto do item
+    
     itemText = itemText.charAt(0).toUpperCase() + itemText.slice(1);
     
     var itemList = document.getElementById('itemList');
@@ -16,8 +16,8 @@ function addItem() {
     newItem.innerHTML = '<span onclick="editItem(this)">' + itemText + '</span> <span onclick="editQuantity(this)">' + quantity + ' ' + unit + '</span> <button onclick="markItem(this)">Comprado</button> <button onclick="removeItem(this)">Remover</button>';
     itemList.appendChild(newItem);
     itemInput.value = '';
-    quantityInput.value = ''; // Limpa o campo de quantidade após adicionar um item
-    saveList(); // Salva a lista após adicionar um item
+    quantityInput.value = ''; 
+    saveList(); 
   } else {
     alert('Por favor, insira um item e uma quantidade válidos.');
   }
