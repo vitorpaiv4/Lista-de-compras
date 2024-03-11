@@ -11,7 +11,7 @@ Este é um simples site de lista de compras desenvolvido utilizando HTML, CSS e 
 
 ## Como Usar
 
-1. Clone este repositório em sua máquina local: https://lista-de-compras-snowy.vercel.app/
+1. Clone este repositório em sua máquina local: https://github.com/vitorpaiv4/Lista-de-compras.git
 
 2. Abra o arquivo `index.html` em seu navegador da web.
 
